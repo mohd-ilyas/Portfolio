@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mohammed Ilyas Shaik — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0f172a;--navy-mid:#1e293b;--navy-soft:#243047;
+  --gold:#c9a84c;--gold-light:#e8c97a;--gold-dim:rgba(201,168,76,0.18);
+  --cream:#f8f5ef;--white:#ffffff;
+  --text:#1e293b;--muted:#64748b;--border:#e2d9c8;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;font-size:16px}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(15,23,42,0.97);display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:62px;border-bottom:1px solid rgba(201,168,76,0.2)}
+.nav-brand{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.05rem;letter-spacing:.04em}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.65);text-decoration:none;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--gold-light)}
+
+/* ── HERO ── */
+#hero{min-height:100vh;background:var(--navy);display:flex;align-items:center;padding:100px 8% 80px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 70% 60% at 85% 15%,rgba(201,168,76,.09) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 50% at 5% 85%,rgba(201,168,76,.06) 0%,transparent 55%)}
+.hero-grid{position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(201,168,76,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.035) 1px,transparent 1px);
+  background-size:56px 56px}
+.hero-content{position:relative;z-index:2;max-width:680px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(201,168,76,.35);color:var(--gold);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;padding:6px 16px;border-radius:2px;margin-bottom:28px}
+.badge-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-firstname{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3.5vw,2.4rem);color:rgba(255,255,255,.5);font-weight:400;display:block;letter-spacing:.04em;margin-bottom:2px}
+.hero-lastname{font-family:'Playfair Display',serif;font-size:clamp(3rem,7vw,5.2rem);color:var(--gold);font-weight:700;display:block;line-height:1;margin-bottom:18px;letter-spacing:-.01em}
+.hero-surname{color:rgba(255,255,255,.9)}
+.hero-tagline{font-size:.85rem;color:rgba(255,255,255,.45);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px;font-weight:300}
+.hero-desc{font-size:.97rem;color:rgba(255,255,255,.68);line-height:1.85;max-width:540px;margin-bottom:38px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.btn-gold{background:var(--gold);color:var(--navy);padding:12px 30px;border:none;border-radius:2px;font-size:.8rem;font-family:'DM Sans',sans-serif;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;transition:background .2s}
+.btn-gold:hover{background:var(--gold-light)}
+.btn-ghost{background:transparent;color:rgba(255,255,255,.75);padding:11px 30px;border:1px solid rgba(255,255,255,.2);border-radius:2px;font-size:.8rem;font-family:'DM Sans',sans-serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;transition:border-color .2s,color .2s}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.hero-stats{display:flex;gap:0;margin-top:60px;border-top:1px solid rgba(201,168,76,.15);padding-top:36px}
+.stat{flex:1;text-align:center;border-right:1px solid rgba(201,168,76,.12)}
+.stat:last-child{border-right:none}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--gold);display:block;line-height:1;margin-bottom:6px}
+.stat-label{font-size:.68rem;color:rgba(255,255,255,.35);letter-spacing:.12em;text-transform:uppercase}
+
+/* ── SECTION COMMON ── */
+section{padding:88px 8%}
+.sec-eyebrow{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:12px}
+.sec-eyebrow::after{content:'';width:36px;height:1px;background:var(--gold);opacity:.4}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,2.8vw,2.4rem);color:var(--navy);margin-bottom:52px;line-height:1.2}
+
+/* ── ABOUT ── */
+#about{background:var(--white)}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:start}
+.about-text p{color:var(--muted);margin-bottom:16px;font-size:.95rem}
+.highlight-box{margin-top:24px;background:var(--cream);border-left:3px solid var(--gold);padding:18px 22px;border-radius:0 2px 2px 0}
+.highlight-box p{margin:0;font-size:.88rem;color:var(--text);font-style:italic}
+.contact-list{margin-top:30px;display:flex;flex-direction:column;gap:12px}
+.contact-row{display:flex;align-items:center;gap:12px;font-size:.88rem}
+.c-icon{width:34px;height:34px;background:var(--navy);border-radius:2px;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:13px;flex-shrink:0;font-family:monospace}
+.contact-row a{color:var(--text);text-decoration:none}
+.contact-row a:hover{color:var(--gold)}
+.skills-panel h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--navy);margin-bottom:20px}
+.sg{margin-bottom:22px}
+.sg-title{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.pills{display:flex;flex-wrap:wrap;gap:7px}
+.pill{padding:4px 13px;border:1px solid var(--border);border-radius:2px;font-size:.78rem;color:var(--text);background:var(--cream)}
+
+/* ── EXPERIENCE ── */
+#experience{background:var(--cream)}
+.exp-wrapper{max-width:720px}
+.exp-card{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--gold);padding:30px 34px;border-radius:2px}
+.exp-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;flex-wrap:wrap;gap:8px}
+.exp-role{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--navy)}
+.exp-date{font-size:.78rem;color:var(--gold);letter-spacing:.06em;background:rgba(201,168,76,.1);padding:3px 12px;border-radius:2px;white-space:nowrap}
+.exp-company{font-size:.85rem;color:var(--muted);margin-bottom:18px;font-weight:300}
+.exp-ul{list-style:none}
+.exp-ul li{font-size:.9rem;color:var(--muted);padding:5px 0 5px 20px;position:relative;line-height:1.65}
+.exp-ul li::before{content:'—';position:absolute;left:0;color:var(--gold);opacity:.6}
+
+/* ── PROJECTS ── */
+#projects{background:var(--navy)}
+#projects .sec-title{color:#fff}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:22px}
+.proj-card{background:rgba(255,255,255,.04);border:1px solid rgba(201,168,76,.14);border-radius:2px;padding:30px 26px;transition:border-color .25s,background .25s;position:relative;overflow:hidden}
+.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);opacity:0;transition:opacity .25s}
+.proj-card:hover{border-color:rgba(201,168,76,.45);background:rgba(255,255,255,.07)}
+.proj-card:hover::before{opacity:1}
+.proj-num{font-family:'Playfair Display',serif;font-size:2.8rem;color:rgba(201,168,76,.12);line-height:1;margin-bottom:14px}
+.proj-title{font-family:'Playfair Display',serif;font-size:1.08rem;color:#fff;margin-bottom:12px;line-height:1.35}
+.proj-desc{font-size:.85rem;color:rgba(255,255,255,.52);line-height:1.78;margin-bottom:18px}
+.proj-tags{display:flex;flex-wrap:wrap;gap:7px}
+.ptag{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 11px;border:1px solid rgba(201,168,76,.28);color:var(--gold);border-radius:2px}
+
+/* ── CERTIFICATIONS ── */
+#certifications{background:var(--white)}
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;max-width:900px}
+.cert-card{background:var(--cream);border:1px solid var(--border);border-radius:2px;padding:22px 20px;display:flex;gap:16px;align-items:flex-start}
+.cert-icon{width:38px;height:38px;background:var(--navy);border-radius:2px;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:16px;flex-shrink:0}
+.cert-name{font-size:.88rem;font-weight:500;color:var(--navy);line-height:1.4;margin-bottom:4px}
+.cert-issuer{font-size:.75rem;color:var(--muted)}
+
+/* ── EDUCATION ── */
+#education{background:var(--cream)}
+.edu-cards{display:flex;flex-direction:column;gap:18px;max-width:680px}
+.edu-card{background:var(--white);border:1px solid var(--border);border-radius:2px;padding:26px 30px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start}
+.edu-pill{background:var(--navy);color:var(--gold);font-size:.72rem;padding:4px 12px;border-radius:2px;letter-spacing:.06em;white-space:nowrap}
+.edu-degree{font-family:'Playfair Display',serif;font-size:1.08rem;color:var(--navy);margin-bottom:4px}
+.edu-school{font-size:.85rem;color:var(--muted);margin-bottom:8px}
+.edu-period{font-size:.75rem;color:var(--gold);letter-spacing:.06em}
+.cgpa-tag{display:inline-block;background:rgba(201,168,76,.12);color:var(--gold);font-size:.75rem;padding:3px 12px;border-radius:2px;border:1px solid rgba(201,168,76,.25);margin-top:8px}
+
+/* ── ACHIEVEMENTS ── */
+#achievements{background:var(--white)}
+.ach-list{max-width:660px}
+.ach-item{display:flex;gap:18px;align-items:flex-start;padding:22px 0;border-bottom:1px solid var(--border)}
+.ach-item:last-child{border-bottom:none}
+.ach-num{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold);opacity:.5;min-width:28px;line-height:1.2}
+.ach-text{font-size:.93rem;color:var(--text);line-height:1.72}
+.ach-text strong{color:var(--navy);font-weight:500}
+
+/* ── FOOTER ── */
+footer{background:var(--navy);text-align:center;padding:52px 8%;border-top:1px solid rgba(201,168,76,.12)}
+.foot-name{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--gold);margin-bottom:8px}
+.foot-sub{font-size:.75rem;color:rgba(255,255,255,.3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:24px}
+.foot-links{display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
+.foot-links a{font-size:.8rem;color:rgba(255,255,255,.45);text-decoration:none;letter-spacing:.06em;transition:color .2s}
+.foot-links a:hover{color:var(--gold)}
+
+@media(max-width:720px){
+  .about-grid{grid-template-columns:1fr;gap:36px}
+  .hero-stats{flex-direction:column;gap:18px}
+  .stat{border-right:none;border-bottom:1px solid rgba(201,168,76,.12);padding-bottom:14px}
+  section{padding:64px 5%}
+  nav{padding:0 5%}
+  .nav-links{gap:16px}
+  .nav-links a{font-size:.7rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Mohammed Ilyas Shaik</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="badge-dot"></span>Open to Opportunities</div>
+    <span class="hero-firstname">Mohammed Ilyas</span>
+    <span class="hero-lastname"><span class="hero-surname">Shaik</span></span>
+    <p class="hero-tagline">AI &amp; Data Science · Builder · Hackathon Leader · Outreach Strategist</p>
+    <p class="hero-desc">
+      A 19-year-old tech-savvy creator and self-driven leader from South India. From pitching AI-based ambulance routing at hackathons to building real-time distributed systems — I solve real problems with ownership and energy.
+    </p>
+    <div class="hero-cta">
+      <a href="mailto:mdilyas4995@gmail.com" class="btn-gold">Get in Touch</a>
+      <a href="https://github.com/mohd-ilyas" target="_blank" class="btn-ghost">GitHub</a>
+      <a href="https://www.linkedin.com/in/shaik-mohammed-ilyas" target="_blank" class="btn-ghost">LinkedIn</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">3+</span><span class="stat-label">Projects</span></div>
+      <div class="stat"><span class="stat-num">8.5</span><span class="stat-label">CGPA</span></div>
+      <div class="stat"><span class="stat-num">5+</span><span class="stat-label">Certifications</span></div>
+      <div class="stat"><span class="stat-num">4</span><span class="stat-label">Hackathons</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-eyebrow">Who I Am</div>
+  <h2 class="sec-title">About Me</h2>
+  <div class="about-grid">
+    <div>
+      <p>I'm Shaik Mohammed Ilyas — a B.Tech student specializing in Artificial Intelligence &amp; Data Science at Gudlavalleru Engineering College, Andhra Pradesh. I'm driven by one thing: solving real problems with technology, ownership, and energy.</p>
+      <p>Beyond code, I bring strong closing and outreach skills — I've led branding campaigns for college events, created content that doubled reach, and converted leads through persuasive communication. I thrive at the intersection of tech and impact.</p>
+      <p>My work spans AI chatbots, real-time distributed systems, and blockchain-integrated platforms. I've collaborated directly with founders, balanced internship deadlines with academics, and represented my ideas at national stages.</p>
+      <div class="highlight-box">
+        <p>"Builder @ the Edge of Growth &amp; Innovation — pitching AI solutions in hackathons, managing branding campaigns, and building systems that work in the real world."</p>
+      </div>
+      <div class="contact-list">
+        <div class="contact-row"><div class="c-icon">✉</div><a href="mailto:mdilyas4995@gmail.com">mdilyas4995@gmail.com</a></div>
+        <div class="contact-row"><div class="c-icon">☎</div><span>+91 9063763569</span></div>
+        <div class="contact-row"><div class="c-icon">gh</div><a href="https://github.com/mohd-ilyas" target="_blank">github.com/mohd-ilyas</a></div>
+        <div class="contact-row"><div class="c-icon">in</div><a href="https://www.linkedin.com/in/shaik-mohammed-ilyas" target="_blank">linkedin.com/in/shaik-mohammed-ilyas</a></div>
+        <div class="contact-row"><div class="c-icon">📍</div><span>Vijayawada, Andhra Pradesh, India</span></div>
+      </div>
+    </div>
+    <div class="skills-panel">
+      <h3>Technical Skills</h3>
+      <div class="sg"><div class="sg-title">Programming</div><div class="pills"><span class="pill">Python</span><span class="pill">Java</span><span class="pill">C++</span><span class="pill">JavaScript</span></div></div>
+      <div class="sg"><div class="sg-title">AI &amp; Data</div><div class="pills"><span class="pill">Machine Learning</span><span class="pill">NLP</span><span class="pill">Prompt Engineering</span><span class="pill">Data Processing</span></div></div>
+      <div class="sg"><div class="sg-title">Development</div><div class="pills"><span class="pill">React Native</span><span class="pill">Node.js</span><span class="pill">REST APIs</span><span class="pill">WebSockets</span></div></div>
+      <div class="sg"><div class="sg-title">Core Concepts</div><div class="pills"><span class="pill">DSA</span><span class="pill">OOP</span><span class="pill">System Design</span><span class="pill">Distributed Systems</span></div></div>
+      <div class="sg"><div class="sg-title">Tools &amp; Platforms</div><div class="pills"><span class="pill">Git &amp; GitHub</span><span class="pill">Linux</span><span class="pill">Android Studio</span><span class="pill">VS Code</span><span class="pill">Postman</span></div></div>
+      <div class="sg"><div class="sg-title">Soft Skills</div><div class="pills"><span class="pill">Outreach &amp; Closing</span><span class="pill">Branding</span><span class="pill">Team Leadership</span><span class="pill">Automation</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="sec-eyebrow">Career</div>
+  <h2 class="sec-title">Work Experience</h2>
+  <div class="exp-wrapper">
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-role">AI Intern</div>
+        <span class="exp-date">Aug 2025 – Nov 2025 · 4 months</span>
+      </div>
+      <div class="exp-company">Tutor-ology · Remote</div>
+      <ul class="exp-ul">
+        <li>Worked with the Research &amp; Automation team on AI model experimentation and early prototype development</li>
+        <li>Focused on automation workflows, AI model testing, data preprocessing, and Python-based tooling</li>
+        <li>Contributed to prompt engineering tasks and API integrations from end to end</li>
+        <li>Collaborated directly with the founder in regular review meetings, sharpening industry communication skills</li>
+        <li>Successfully managed internship deliverables alongside college exams — strong time management under pressure</li>
+        <li>Researched AI trends and helped shape prototype ideas that informed product direction</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="sec-eyebrow">Portfolio</div>
+  <h2 class="sec-title">Featured Projects</h2>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <div class="proj-num">01</div>
+      <div class="proj-title">AyushPath — Intelligent Ambulance Routing System</div>
+      <p class="proj-desc">Real-time route optimization system that reduces ambulance response delays in high-traffic environments using traffic-aware pathfinding. Presented at a national-level hackathon focused on infrastructure innovation.</p>
+      <div class="proj-tags"><span class="ptag">AI</span><span class="ptag">Real-time</span><span class="ptag">Routing</span><span class="ptag">Hackathon</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-num">02</div>
+      <div class="proj-title">Local Network Smart Menu Application</div>
+      <p class="proj-desc">Client-server Android system connecting mobile devices and Android TV via WebSocket communication. Features mDNS service discovery and offline-first architecture for reliable performance without internet.</p>
+      <div class="proj-tags"><span class="ptag">Android</span><span class="ptag">WebSockets</span><span class="ptag">mDNS</span><span class="ptag">Offline-first</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-num">03</div>
+      <div class="proj-title">AI Carbon Monitoring Platform (Blockchain MRV)</div>
+      <p class="proj-desc">Platform for Monitoring, Reporting &amp; Verification of carbon ecosystems — integrating AI-based data processing with blockchain validation for transparent, scalable, and reliable carbon tracking.</p>
+      <div class="proj-tags"><span class="ptag">Blockchain</span><span class="ptag">AI</span><span class="ptag">MRV</span><span class="ptag">Sustainability</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="sec-eyebrow">Credentials</div>
+  <h2 class="sec-title">Certifications &amp; Events</h2>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <div class="cert-icon">✦</div>
+      <div><div class="cert-name">AI for Everyone: Master the Basics</div><div class="cert-issuer">edX Verified Certificate</div></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">◈</div>
+      <div><div class="cert-name">Teckzite</div><div class="cert-issuer">Technical Fest Certificate</div></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">◈</div>
+      <div><div class="cert-name">Kurukshetra Hackathon</div><div class="cert-issuer">Certificate of Participation</div></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">◈</div>
+      <div><div class="cert-name">HackData '25</div><div class="cert-issuer">Certificate of Participation (×2)</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="sec-eyebrow">Academic Background</div>
+  <h2 class="sec-title">Education</h2>
+  <div class="edu-cards">
+    <div class="edu-card">
+      <div><span class="edu-pill">B.Tech</span></div>
+      <div>
+        <div class="edu-degree">Artificial Intelligence &amp; Data Science</div>
+        <div class="edu-school">Gudlavalleru Engineering College, Seshadri Rao Knowledge Village</div>
+        <div class="edu-period">September 2023 – May 2027</div>
+        <span class="cgpa-tag">CGPA: 8.5 / 10</span>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div><span class="edu-pill">PUC</span></div>
+      <div>
+        <div class="edu-degree">Pre-University Course — MBiPC</div>
+        <div class="edu-school">Rajiv Gandhi University of Knowledge Technologies, Nuzvid</div>
+        <div class="edu-period">January 2021 – May 2023</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="sec-eyebrow">Highlights</div>
+  <h2 class="sec-title">Achievements</h2>
+  <div class="ach-list">
+    <div class="ach-item">
+      <div class="ach-num">01</div>
+      <div class="ach-text">Participant in a <strong>Guinness World Record event</strong> — the largest agentic AI hackathon, organized by Google Developer Groups (GDG) Hyderabad, December 2025</div>
+    </div>
+    <div class="ach-item">
+      <div class="ach-num">02</div>
+      <div class="ach-text">Recognized for delivering a <strong>production-ready AI solution</strong> during the Tutor-ology internship within the set timeline, collaborating directly with the founder</div>
+    </div>
+    <div class="ach-item">
+      <div class="ach-num">03</div>
+      <div class="ach-text">Presented <strong>AyushPath</strong> (intelligent ambulance routing) at a national-level hackathon focused on infrastructure innovation</div>
+    </div>
+    <div class="ach-item">
+      <div class="ach-num">04</div>
+      <div class="ach-text">Built and deployed <strong>multiple real-world AI and distributed applications</strong> — spanning emergency routing, smart menus, and blockchain-based carbon monitoring</div>
+    </div>
+    <div class="ach-item">
+      <div class="ach-num">05</div>
+      <div class="ach-text">Led branding and content campaigns for college fests that <strong>2× audience reach</strong> through reels, posters, and strategic outreach</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-name">Mohammed Ilyas Shaik</div>
+  <div class="foot-sub">AI &amp; Data Science · Vijayawada, Andhra Pradesh · India</div>
+  <div class="foot-links">
+    <a href="mailto:mdilyas4995@gmail.com">Email</a>
+    <a href="https://github.com/mohd-ilyas" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/shaik-mohammed-ilyas" target="_blank">LinkedIn</a>
+    <a href="tel:+919063763569">+91 9063763569</a>
+  </div>
+</footer>
+
+</body>
+</html>
